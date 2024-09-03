@@ -97,14 +97,25 @@ def update_count(request):
 
 
 def articles(request, _):
-    
-    rsp = get_articles()
-  
+
+    body_unicode = request.body.decode('utf-8')
+    body = json.loads(body_unicode)
+    print(body['code'])
+    rsp = get_articles(body['code'])
+
     return rsp
 
 
-def get_articles():
+def get_articles(js_code):
 
+
+    url = 'https://api.weixin.qq.com/sns/jscode2session'
+    data = {
+        'js_code': js_code,
+        'grant_type':  'authorization_code '
+    }
+    response = requests.post(url, data = data)
+"""
     url = 'https://api.weixin.qq.com/cgi-bin/material/batchget_material'
     data = {
         'type': 'news',
@@ -113,7 +124,7 @@ def get_articles():
     }
 
     response = requests.post(url, data = data)
-
+"""
     
     if response.status_code == 200:
         print(response.json())
