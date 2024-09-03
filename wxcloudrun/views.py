@@ -126,7 +126,7 @@ def get_articles(js_code):
         response = requests.post(url, data = data)
     """
     if response.status_code == 200:
-        print(response.json())
+        print("OK"+response.json())
     else:
         print("Error: " + response.text)
 
