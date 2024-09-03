@@ -100,17 +100,22 @@ def articles(request, _):
 
     body_unicode = request.body.decode('utf-8')
     body = json.loads(body_unicode)
-    print(body['code'])
-    rsp = get_articles(body['code'])
+    code - body['code']
+    openid = request.headers['x-wx-openid'],
+    print("code"+code)
+    print("openid"+openid)
+    rsp = get_articles(code,openid)
 
     return rsp
 
 
-def get_articles(js_code):
+def get_articles(js_code,openid):
     url = 'https://api.weixin.qq.com/sns/jscode2session'
     data = {
         'js_code': js_code,
+        'openid' : openid,
         'grant_type':  'authorization_code '
+
     }
     response = requests.post(url, data = data)
     if response.status_code == 200:
