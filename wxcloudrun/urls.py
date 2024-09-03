@@ -21,10 +21,12 @@ urlpatterns = (
     # 计数器接口
     url(r'^^api/count(/)?$', views.counter),
 
+    # 获取微信订阅号列表
+    url(r'^^api/articles(/)?$', views.articles),
+
     # 获取主页
     url(r'(/)?$', views.index),
 
-    # 获取微信订阅号列表
-    url(r'^^api/articles(/)?$', views.articles),
+    
     
 )
