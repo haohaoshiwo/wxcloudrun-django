@@ -105,13 +105,14 @@ def articles(request, _):
 
 def get_articles():
 
-    url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential'
-    myobj = {
-        'appid': 'wxe7f7f605b6fbfcb7',
-        'secret': 'b41b267a9f7988bc99810af05c442730'
+    url = 'https://api.weixin.qq.com/cgi-bin/material/batchget_material'
+    data = {
+        'type': 'news',
+        'offset':  10,
+        'count': 10
     }
 
-    response = requests.post(url, data = myobj)
+    response = requests.post(url, data = data)
 
     
     if response.status_code == 200:
