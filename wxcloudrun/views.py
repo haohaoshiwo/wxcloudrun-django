@@ -102,8 +102,7 @@ def articles(request, _):
     body = json.loads(body_unicode)
     code = body['code']
 
-    headers_unicode = request.headers.decode('utf-8'),
-    headers = json.loads(headers_unicode)
+    
     openid = headers['x-wx-openid']
     print("code"+code)
     print("openid"+openid)
