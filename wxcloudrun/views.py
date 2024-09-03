@@ -1,5 +1,6 @@
 import json
 import logging
+import requests
 
 from django.http import JsonResponse
 from django.shortcuts import render
@@ -103,9 +104,12 @@ def articles(request, _):
 
 
 def get_articles():
-    """
-    获取当前计数
-    """
+    
+    response = requests.get('<https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxe7f7f605b6fbfcb7&secret=b41b267a9f7988bc99810af05c442730>')
+    if response.status_code == 200:
+        print(response.json())
+    else:
+        print("Error: " + response.text)
 
-    return JsonResponse({'code': 0, 'data': "Nihao Danny"},json_dumps_params={'ensure_ascii': False})
+    return JsonResponse({'code': 0, 'data': response.json},json_dumps_params={'ensure_ascii': False})
 
