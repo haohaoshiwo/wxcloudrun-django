@@ -115,16 +115,6 @@ def get_articles(js_code):
         'grant_type':  'authorization_code '
     }
     response = requests.post(url, data = data)
-    """
-        url = 'https://api.weixin.qq.com/cgi-bin/material/batchget_material'
-        data = {
-            'type': 'news',
-            'offset':  10,
-            'count': 10
-        }
-
-        response = requests.post(url, data = data)
-    """
     if response.status_code == 200:
         print("OK"+response.json())
     else:
