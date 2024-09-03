@@ -25,6 +25,8 @@ urlpatterns = (
     url(r'(/)?$', views.index),
 
     # 获取微信订阅号列表
-    url(r'^^api/getSubscriptionList(/)?$', views.getSubscriptionList),
+    
     """url('api/getSubscriptionList/', views.getSubscriptionList),"""
+
+    path("api/getSubscriptionList/", views.getSubscriptionList),
 )
