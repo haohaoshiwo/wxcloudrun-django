@@ -100,8 +100,11 @@ def articles(request, _):
 
     body_unicode = request.body.decode('utf-8')
     body = json.loads(body_unicode)
-    code - body['code']
-    openid = request.headers['x-wx-openid'],
+    code = body['code']
+
+    headers_unicode = request.headers.decode('utf-8'),
+    headers = json.loads(headers_unicode)
+    openid = headers['x-wx-openid']
     print("code"+code)
     print("openid"+openid)
     rsp = get_articles(code,openid)
