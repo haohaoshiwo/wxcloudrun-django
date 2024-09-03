@@ -90,3 +90,30 @@ def update_count(request):
     else:
         return JsonResponse({'code': -1, 'errorMsg': 'action参数错误'},
                     json_dumps_params={'ensure_ascii': False})
+
+
+
+
+
+def getDescriptionList(request, _):
+    """
+    获取当前计数
+
+     `` request `` 请求对象
+    """
+
+    rsp = JsonResponse({'code': 0, 'errorMsg': ''}, json_dumps_params={'ensure_ascii': False})
+    
+    rsp = get_List()
+
+    logger.info('response result: {}'.format(rsp.content.decode('utf-8')))
+    return rsp
+
+
+def get_List():
+    """
+    获取当前计数
+    """
+
+    return JsonResponse({'code': 0, 'data': "Nihao"},json_dumps_params={'ensure_ascii': False})
+
