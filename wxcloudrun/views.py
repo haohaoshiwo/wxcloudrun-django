@@ -104,18 +104,22 @@ def articles(request, _):
 
     
     openid = request.headers['x-wx-openid']
+
+    appid = request.headers['x-wx-from-appid']
     print("code"+code)
     print("openid"+openid)
-    rsp = get_articles(code,openid)
+    print("appid"+appid)
+    rsp = get_articles(code,openid,appid)
 
     return rsp
 
 
-def get_articles(js_code,openid):
+def get_articles(js_code,openid,appid):
     url = 'https://api.weixin.qq.com/sns/jscode2session'
     data = {
         'js_code': js_code,
         'openid' : openid,
+        'from_appid':appid,
         'grant_type':  'authorization_code '
 
     }
