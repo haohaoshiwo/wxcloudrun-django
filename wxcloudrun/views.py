@@ -95,7 +95,7 @@ def update_count(request):
 
 
 
-def getDescriptionList(request, _):
+def getSubscriptionList(request, _):
     """
     获取当前计数
 
