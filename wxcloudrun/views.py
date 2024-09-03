@@ -103,7 +103,7 @@ def articles(request, _):
     code = body['code']
 
     
-    openid = headers['x-wx-openid']
+    openid = request.headers['x-wx-openid']
     print("code"+code)
     print("openid"+openid)
     rsp = get_articles(code,openid)
