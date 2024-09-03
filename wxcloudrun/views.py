@@ -48,8 +48,9 @@ def get_count():
     except Counters.DoesNotExist:
         return JsonResponse({'code': 0, 'data': 0},
                     json_dumps_params={'ensure_ascii': False})
-    return JsonResponse({'code': 0, 'data': data.count},
-                        json_dumps_params={'ensure_ascii': False})
+    "return JsonResponse({'code': 0, 'data': data.count},json_dumps_params={'ensure_ascii': False})"
+    return JsonResponse({'code': 0, 'data': "Hello World"},json_dumps_params={'ensure_ascii': False})"
+
 
 
 def update_count(request):
