@@ -97,11 +97,16 @@ def update_count(request):
 
 def getSubscriptionList(request, _):
     """
-    获取当前计数
-
-     `` request `` 请求对象
+    获取用户ID及对应的订阅号信息
     """
+    logger.info('user req: {}'.format(request.body))
 
+    body_unicode = request.body.decode('utf-8')
+    body = json.loads(body_unicode)
+
+    "if 'action' not in body:"
+        "return JsonResponse({'code': -1, 'errorMsg': '缺少action参数'},"
+                            "json_dumps_params={'ensure_ascii': False})"
     rsp = JsonResponse({'code': 0, 'errorMsg': ''}, json_dumps_params={'ensure_ascii': False})
     
     rsp = get_List()
@@ -115,5 +120,5 @@ def get_List():
     获取当前计数
     """
 
-    return JsonResponse({'code': 0, 'data': "Nihao"},json_dumps_params={'ensure_ascii': False})
+    return JsonResponse({'code': 0, 'data': "Nihao Danny"},json_dumps_params={'ensure_ascii': False})
 
