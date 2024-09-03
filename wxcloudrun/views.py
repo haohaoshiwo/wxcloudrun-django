@@ -107,8 +107,6 @@ def articles(request, _):
 
 
 def get_articles(js_code):
-
-
     url = 'https://api.weixin.qq.com/sns/jscode2session'
     data = {
         'js_code': js_code,
@@ -116,7 +114,7 @@ def get_articles(js_code):
     }
     response = requests.post(url, data = data)
     if response.status_code == 200:
-        print("OK"+response.json())
+        print(response.json())
     else:
         print("Error: " + response.text)
 
