@@ -95,14 +95,14 @@ def update_count(request):
 
 
 
-def getSubscriptionList(request, _):
+def articles(request, _):
     
-    rsp = get_List()
+    rsp = get_articles()
   
     return rsp
 
 
-def get_List():
+def get_articles():
     """
     获取当前计数
     """
