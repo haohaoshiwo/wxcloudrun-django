@@ -104,8 +104,16 @@ def articles(request, _):
 
 
 def get_articles():
+
+    url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential'
+    myobj = {
+        'appid': 'wxe7f7f605b6fbfcb7',
+        'secret': 'b41b267a9f7988bc99810af05c442730'
+    }
+
+    response = requests.post(url, data = myobj)
+
     
-    response = requests.get('<https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxe7f7f605b6fbfcb7&secret=b41b267a9f7988bc99810af05c442730>')
     if response.status_code == 200:
         print(response.json())
     else:
