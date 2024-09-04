@@ -112,6 +112,7 @@ def articles(request, _):
     url = 'https://api.weixin.qq.com/cgi-bin/material/batchget_material'
 
     post_data = {
+    "from_appid":appid,
     "type":"news",
     "offset":0,
     "count":10
