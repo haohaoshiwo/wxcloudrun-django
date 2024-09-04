@@ -120,7 +120,7 @@ def articles(request, _):
     response = requests.post(url, data= post_data)
 
     articles = response.json()
-    print("response:"+articles)
+    print(articles)
 
     return articles
 
