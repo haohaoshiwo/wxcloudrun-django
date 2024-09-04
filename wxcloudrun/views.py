@@ -100,17 +100,17 @@ def articles(request, _):
 
     
 
-    appid = request.headers['X-WX-FROM-APPID']
-    openid = request.headers['X-WX-OPENID']
+    ##appid = request.headers['X-WX-FROM-APPID']
+    ##openid = request.headers['X-WX-OPENID']
     
     ##print("code "+code)
-    print("appid " + appid)
-    print("openid "+openid)
+    ##print("appid " + appid)
+    ##print("openid "+openid)
 
     url = 'https://api.weixin.qq.com/cgi-bin/material/batchget_material'
 
     post_data = {
-    "from_appid": appid,  # noqa: E122
+    ##"from_appid": appid,  # noqa: E122
     "type": "news",  # noqa: E122
     "offset": 0,  # noqa: E122
     "count": 10  # noqa: E122
