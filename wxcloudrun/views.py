@@ -27,14 +27,14 @@ def counter(request, _):
      `` request `` 请求对象
     """
 
-    rsp = JsonResponse({'code': 0, 'errorMsg': ''}, json_dumps_params={'ensure_ascii': False})
+    rsp = JsonResponse({'code': 0, 'errorMsg': ''}, json_dumps_params={'ensure_ascii': False})  # noqa: E501
     if request.method == 'GET' or request.method == 'get':
         rsp = get_count()
     elif request.method == 'POST' or request.method == 'post':
         rsp = update_count(request)
     else:
         rsp = JsonResponse({'code': -1, 'errorMsg': '请求方式错误'},
-                            json_dumps_params={'ensure_ascii': False})
+                            json_dumps_params={'ensure_ascii': False})  # noqa: E127
     logger.info('response result: {}'.format(rsp.content.decode('utf-8')))
     return rsp
 
@@ -98,27 +98,25 @@ def update_count(request):
 
 def articles(request, _):
 
-    body_unicode = request.body.decode('utf-8')
-    body = json.loads(body_unicode)
-    code = body['action']
+    
 
     appid = request.headers['X-WX-FROM-APPID']
     openid = request.headers['X-WX-OPENID']
     
-    print("code "+code)
+    ##print("code "+code)
     print("appid " + appid)
     print("openid "+openid)
 
     url = 'https://api.weixin.qq.com/cgi-bin/material/batchget_material'
 
     post_data = {
-    "from_appid":appid,
-    "type":"news",
-    "offset":0,
-    "count":10
+    "from_appid": appid,  # noqa: E122
+    "type": "news",  # noqa: E122
+    "offset": 0,  # noqa: E122
+    "count": 10  # noqa: E122
     }
 
-    response = requests.post(url, data= post_data)
+    response = requests.post(url, data=post_data)
 
     articles = response.json()
     print(articles)
@@ -126,23 +124,3 @@ def articles(request, _):
     return articles
 
 
-def get_articles(js_code,openid,appid):
-    """
-    url = 'https://api.weixin.qq.com/sns/jscode2session'
-    data = {
-        'js_code': js_code,
-        'openid' : openid,
-        'from_appid':appid,
-        'grant_type':  'authorization_code '
-
-    }
-
-    response = requests.post(url, data = data)
-    if response.status_code == 200:
-        print(response.json())
-    else:
-        print("Error: " + response.text)
-
-    return JsonResponse({'code': 0, 'data': response.json},json_dumps_params={'ensure_ascii': False})
-    """
-    
