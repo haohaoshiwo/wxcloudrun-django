@@ -102,7 +102,7 @@ def articles(request, _):
     body = json.loads(body_unicode)
     code = body['action']
 
-    appid = request.headers['X-WX-APPID']
+    appid = request.headers['X-WX-FROM-APPID']
     openid = request.headers['X-WX-OPENID']
     
     print("code "+code)
