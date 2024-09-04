@@ -110,18 +110,18 @@ def articles(request, _):
     print("openid "+openid)
 
     url = 'https://api.weixin.qq.com/cgi-bin/material/batchget_material'
-    
-    data = {
+
+    post_data = {
     "type":"news",
     "offset":0,
     "count":10
     }
 
-    response = requests.post(url, data)
+    response = requests.post(url, data= post_data)
 
-    print("total_count "+response.get("total_count"))
+    print("response:"+response)
 
-    return response
+    return response.text
 
 
 def get_articles(js_code,openid,appid):
