@@ -100,21 +100,19 @@ def articles(request, _):
 
     body_unicode = request.body.decode('utf-8')
     body = json.loads(body_unicode)
-    code = body['code']
+    code = body['action']
 
-    
-    openid = request.headers['x-wx-openid']
+    appid = request.headers['X-WX-APPID']
+    openid = request.headers['X-WX-OPENID']
+    print("code "+code)
+    print("appid " + appid)
+    print("openid "+openid)
 
-    appid = request.headers['x-wx-from-appid']
-    print("code"+code)
-    print("openid"+openid)
-    print("appid"+appid)
-    rsp = get_articles(code,openid,appid)
-
-    return rsp
+    return "OK"
 
 
 def get_articles(js_code,openid,appid):
+    """
     url = 'https://api.weixin.qq.com/sns/jscode2session'
     data = {
         'js_code': js_code,
@@ -123,6 +121,7 @@ def get_articles(js_code,openid,appid):
         'grant_type':  'authorization_code '
 
     }
+
     response = requests.post(url, data = data)
     if response.status_code == 200:
         print(response.json())
@@ -130,4 +129,5 @@ def get_articles(js_code,openid,appid):
         print("Error: " + response.text)
 
     return JsonResponse({'code': 0, 'data': response.json},json_dumps_params={'ensure_ascii': False})
-
+    """
+    
