@@ -119,9 +119,10 @@ def articles(request, _):
 
     response = requests.post(url, data= post_data)
 
-    print("response:"+response)
+    articles = resopnse.json()
+    print("response:"+articles)
 
-    return response.text
+    return articles
 
 
 def get_articles(js_code,openid,appid):
