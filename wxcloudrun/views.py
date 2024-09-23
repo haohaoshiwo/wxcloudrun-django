@@ -123,7 +123,7 @@ def articles(request, _):
 
     return articles
 
-def avatar(request):
+def avatar(request, _):
     """
     获取头像照片
 
@@ -132,8 +132,10 @@ def avatar(request):
 
     body_unicode = request.body.decode('utf-8')
     body = json.loads(body_unicode)
+    avatar_url = body["img"]
+    print(avatar_url)
 
-    if body['img'] == 'add':
+    if avatar_url == 'add':
         print(body['img'])
         return JsonResponse({'code': 0, "data": "imgGet"},
                     json_dumps_params={'ensure_ascii': False})
