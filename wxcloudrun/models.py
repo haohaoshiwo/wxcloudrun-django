@@ -28,3 +28,14 @@ class Articles(models.Model):
 
     class Meta:
         db_table = 'Articles'  # 数据库表名
+
+# Create your models here.
+class Avatar(models.Model):
+    id = models.AutoField
+    count = models.IntegerField(max_length=11, default=0)
+    
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        db_table = 'Avatar'  # 数据库表名

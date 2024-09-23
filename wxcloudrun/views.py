@@ -123,4 +123,22 @@ def articles(request, _):
 
     return articles
 
+def avatar(request):
+    """
+    获取头像照片
+
+    `` request `` 请求对象
+    """
+
+    body_unicode = request.body.decode('utf-8')
+    body = json.loads(body_unicode)
+
+    if body['img'] == 'add':
+        print(img)
+        return JsonResponse({'code': 0, "data": "imgGet"},
+                    json_dumps_params={'ensure_ascii': False})
+    
+    else:
+        return JsonResponse({'code': -1, 'errorMsg': 'action参数错误'},
+                    json_dumps_params={'ensure_ascii': False})
 

@@ -24,6 +24,9 @@ urlpatterns = (
     # 获取微信订阅号列表
     url(r'^^api/articles(/)?$', views.articles),
 
+    # 获取头像分析
+    url(r'^^api/avatar(/)?$', views.avatar),
+
     # 获取主页
     url(r'(/)?$', views.index),
 
