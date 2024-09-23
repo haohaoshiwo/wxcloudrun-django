@@ -132,7 +132,7 @@ def avatar(request, _):
 
     body_unicode = request.body.decode('utf-8')
     body = json.loads(body_unicode)
-    avatar_url = body["img"]
+    avatar_url = body["fileid"]
     print(avatar_url)
 
     if avatar_url == 'add':
