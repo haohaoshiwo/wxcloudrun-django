@@ -134,7 +134,7 @@ def avatar(request):
     body = json.loads(body_unicode)
 
     if body['img'] == 'add':
-        print(img)
+        print(body['img'])
         return JsonResponse({'code': 0, "data": "imgGet"},
                     json_dumps_params={'ensure_ascii': False})
     
